@@ -16,6 +16,7 @@ const Home = ({ setHeaderPageName }) => {
         : process.env.REACT_APP_API_BASE_URL;
 
     try {
+      console.log(url)
       const response = await axios.get(`${url}/hotels`);
       
       let dataObject;
@@ -102,3 +103,4 @@ const Home = ({ setHeaderPageName }) => {
 };
 
 export default Home;
+
