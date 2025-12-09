@@ -7,7 +7,9 @@ import Loading from "../component/Loading";
 const Home = ({ setHeaderPageName }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
-  const randomNUmber = Math.floor(Math.random() * data?.length);
+  
+
+  const randomIndex = data ? Math.floor(Math.random() * data.length) : 0;
 
   const fetchData = async () => {
     const url =
@@ -17,30 +19,33 @@ const Home = ({ setHeaderPageName }) => {
 
     try {
       const response = await axios.get(`${url}/hotels`);
+      
+ 
       const dataObject = response.data?.data;
-      const arrayOfData = Object.keys(dataObject)?.map((key) => [
-        key,
-        dataObject[key],
-      ]);
-      setData(arrayOfData);
+      
+      if (dataObject && typeof dataObject === 'object') {
+        const arrayOfData = Object.keys(dataObject).map((key) => [
+          key,
+          dataObject[key],
+        ]);
+        setData(arrayOfData);
+      } else {
+        console.error('Invalid data structure received from API:', response.data);
+        setData([]); 
+      }
+      
       setLoading(false);
     } catch (error) {
-      console.log(error);
-    }
-  };
-  const loadingHandle = () => {
-    if (data === null) setLoading(true);
-    else if (data !== null) {
+      console.error('Error fetching data:', error);
       setLoading(false);
+      setData([]); 
     }
   };
+
   useEffect(() => {
     setHeaderPageName("home");
     fetchData();
   }, []);
-  useEffect(() => {
-    loadingHandle();
-  }, [data]);
 
   return (
     <div id="home">
@@ -48,18 +53,15 @@ const Home = ({ setHeaderPageName }) => {
       <div className="sections-container">
         <div className="section1-container">
           <div className="img-container">
-            {data?.map((hotel) => {
-              if (hotel[1].id === randomNUmber + 1)
-                return (
-                  <Link key={hotel[1].id} to={`/post/${hotel[0]}`}>
-                    <img src={hotel[1].cardImg} alt="homeImg" />
-                  </Link>
-                );
-            })}
+            {!loading && data && data.length > 0 && data[randomIndex] && (
+              <Link to={`/post/${data[randomIndex][0]}`}>
+                <img src={data[randomIndex][1].cardImg} alt="homeImg" />
+              </Link>
+            )}
           </div>
           <div className="text-container">
             <p>
-              We don’t just rate hotels—we live in them. Every trusted riad and
+              We don't just rate hotels—we live in them. Every trusted riad and
               hotel has been tested by our local team: we slept in its beds,
               tasted mint tea in its courtyard, and checked every detail. No
               algorithms. No paid placements. Only honest opinions from people
@@ -71,7 +73,7 @@ const Home = ({ setHeaderPageName }) => {
         </div>
         <div className="section2-container">
           <div className="cards-container">
-            {data?.map((hotel) => {
+            {!loading && data && data.map((hotel) => {
               return (
                 <Card
                   key={hotel[0]}
@@ -89,6 +91,3 @@ const Home = ({ setHeaderPageName }) => {
   );
 };
 export default Home;
-
-
-
