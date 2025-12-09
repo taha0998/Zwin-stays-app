@@ -20,7 +20,7 @@ const Post = ({ setHeaderPageName }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/hotels/${id}`);
+      const response = await axios.get(`${url}/hotels/${id}`);
       setHotel(response.data.data);
     } catch (error) {
       console.log(error);
@@ -28,7 +28,7 @@ const Post = ({ setHeaderPageName }) => {
   };
   const fetchAllHotels = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/hotels");
+      const response = await axios.get(`${url}/hotels`);
       const dataObject = response.data.data;
       const arrayOfData = Object.keys(dataObject).map((key) => [
         key,
@@ -64,12 +64,9 @@ const Post = ({ setHeaderPageName }) => {
   const data = { ...hotel };
   const updateHotel = async () => {
     try {
-      const response = await axios.put(
-        `http://localhost:8000/edithotel/${id}`,
-        {
-          data,
-        }
-      );
+      const response = await axios.put(`${url}/edithotel/${id}`, {
+        data,
+      });
     } catch (error) {
       console.log(error);
     }
