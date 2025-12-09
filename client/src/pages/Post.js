@@ -14,7 +14,7 @@ const Post = ({ setHeaderPageName }) => {
   const [hotels, setHotels] = useState(null);
   const [loading, setLoading] = useState(true);
   const url =
-    process.env.NODE_ENV === "devlompent"
+    process.env.NODE_ENV === "development"
       ? "http://localhost:8000"
       : process.env.REACT_APP_API_BASE_URL;
 
@@ -68,7 +68,7 @@ const Post = ({ setHeaderPageName }) => {
         data,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
