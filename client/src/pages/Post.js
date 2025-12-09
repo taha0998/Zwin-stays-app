@@ -13,6 +13,10 @@ const Post = ({ setHeaderPageName }) => {
   const [hotel, setHotel] = useState(null);
   const [hotels, setHotels] = useState(null);
   const [loading, setLoading] = useState(true);
+  const url =
+    process.env.NODE_ENV === "devlompent"
+      ? "http://localhost:8000"
+      : process.env.REACT_APP_API_BASE_URL;
 
   const fetchData = async () => {
     try {
@@ -106,16 +110,18 @@ const Post = ({ setHeaderPageName }) => {
             </div>
           </div>
         </div>
-        <div className="section3-container section">
-          <h2>{hotel?.info[1]?.infoTitle}</h2>
-          <div className="info-container">
-            <div className="img-container">
-              <img src={hotel?.info[1].img} alt="" />
+        <div className="section3-container section s-fix">
+          <div className="section-container">
+            <h2>{hotel?.info[1]?.infoTitle}</h2>
+            <div className="info-container">
+              <div className="img-container">
+                <img src={hotel?.info[1].img} alt="" />
+              </div>
+              <p>{hotel?.info[1].content}</p>
             </div>
-            <p>{hotel?.info[1].content}</p>
           </div>
         </div>
-        <div className="section4-container">
+        <div className="section4-container s-fix">
           <div className="section">
             <h2>{hotel?.info[2].infoTitle}</h2>
             <div className="info-container">
@@ -126,13 +132,15 @@ const Post = ({ setHeaderPageName }) => {
             </div>
           </div>
         </div>
-        <div className="section5-container section">
-          <h2>{hotel?.info[3].infoTitle}</h2>
-          <div className="info-container">
-            <div className="img-container">
-              <img src={hotel?.info[3].img} alt="" />
+        <div className="section5-container section s-fix">
+          <div className="section-container">
+            <h2>{hotel?.info[3].infoTitle}</h2>
+            <div className="info-container">
+              <div className="img-container">
+                <img src={hotel?.info[3].img} alt="" />
+              </div>
+              <p>{hotel?.info[3].content}</p>
             </div>
-            <p>{hotel?.info[3].content}</p>
           </div>
         </div>
         <div className="section6-container">
