@@ -17,7 +17,7 @@ const Home = ({ setHeaderPageName }) => {
 
     try {
       const response = await axios.get(`${url}/hotels`);
-      const dataObject = response?.data.data;
+      const dataObject = response.data?.data;
       const arrayOfData = Object.keys(dataObject)?.map((key) => [
         key,
         dataObject[key],
@@ -89,5 +89,6 @@ const Home = ({ setHeaderPageName }) => {
   );
 };
 export default Home;
+
 
 
