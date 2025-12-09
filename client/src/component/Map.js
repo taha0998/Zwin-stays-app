@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 const MapComponent = ({ hotel }) => {
   const [coords, setCoords] = useState(hotel?.coords);
-  console.log(coords)
 
 useEffect(()=>{
   setCoords(hotel?.coords)
