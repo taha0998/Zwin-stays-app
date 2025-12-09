@@ -11,11 +11,12 @@ const Home = ({ setHeaderPageName }) => {
 
   const fetchData = async () => {
     const url =
-      process.env.NODE_ENV === "develompent"
+      process.env.NODE_ENV === "development"
         ? "http://localhost:8000"
         : process.env.REACT_APP_API_BASE_URL;
 
     try {
+      console.log(url)
       const response = await axios.get(`${url}/hotels`);
       const dataObject = response.data.data;
       const arrayOfData = Object.keys(dataObject).map((key) => [
