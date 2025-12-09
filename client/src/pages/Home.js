@@ -10,8 +10,13 @@ const Home = ({ setHeaderPageName }) => {
   const randomNUmber = Math.floor(Math.random() * data?.length);
 
   const fetchData = async () => {
+    const url =
+      process.env.NODE_ENV === "develompent"
+        ? "http://localhost:8000"
+        : process.env.REACT_APP_API_BASE_URL;
+
     try {
-      const response = await axios.get("http://localhost:8000/hotels");
+      const response = await axios.get(`${url}/hotels`);
       const dataObject = response.data.data;
       const arrayOfData = Object.keys(dataObject).map((key) => [
         key,
