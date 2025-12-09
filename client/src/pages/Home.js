@@ -19,9 +19,9 @@ const Home = ({ setHeaderPageName }) => {
 
     try {
       const response = await axios.get(`${url}/hotels`);
+
       console.log(response, url)
       
- 
       const dataObject = response.data?.data;
       
       if (dataObject && typeof dataObject === 'object') {
