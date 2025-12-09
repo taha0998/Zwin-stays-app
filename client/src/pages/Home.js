@@ -20,7 +20,6 @@ const Home = ({ setHeaderPageName }) => {
     try {
       const response = await axios.get(`${url}/hotels`);
 
-      console.log(response, url)
       
       const dataObject = response.data?.data;
       
@@ -92,4 +91,5 @@ const Home = ({ setHeaderPageName }) => {
   );
 };
 export default Home;
+
 
