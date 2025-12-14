@@ -454,6 +454,7 @@ body {
   font-size: clamp(2rem, 2.79vw, 3.346rem);
   font-weight: 500;
   user-select: text;
+  text-align:center;
 }
 .pigeon-attribution{
   visibility: hidden;
@@ -569,3 +570,4 @@ body {
     height: 300px;
   }
 }
+
