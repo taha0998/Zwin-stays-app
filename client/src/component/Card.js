@@ -4,7 +4,7 @@ const Card = ({ id, img, title, city }) => {
     <Link className="card-link" to={`/post/${id}`}>
       <div className="card-container">
         <div className="card-img-container">
-          <img src={img} alt="card-img" />
+          <img src={img} alt="card-img" loading="lazy" />
         </div>
         <h3>
           {title}, <span>{city}</span>
@@ -15,3 +15,4 @@ const Card = ({ id, img, title, city }) => {
 };
 
 export default Card;
+
