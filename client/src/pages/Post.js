@@ -88,7 +88,7 @@ const Post = ({ setHeaderPageName }) => {
       <div className="sections-container">
         <div className="section1-container">
           <div className="img-container">
-            <img src={hotel?.postImg} alt="post-img" />
+            <img src={hotel?.postImg} alt="post-img" loading="lazy" />
           </div>
         </div>
         <div className="section2-container">
@@ -102,7 +102,7 @@ const Post = ({ setHeaderPageName }) => {
             <div className="info-container">
               <p>{hotel?.info[0].content}</p>
               <div className="img-container">
-                <img src={hotel?.info[0].img} alt="postImg1" />
+                <img src={hotel?.info[0].img} alt="postImg1" loading="lazy" />
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ const Post = ({ setHeaderPageName }) => {
             <h2>{hotel?.info[1]?.infoTitle}</h2>
             <div className="info-container">
               <div className="img-container">
-                <img src={hotel?.info[1].img} alt="" />
+                <img src={hotel?.info[1].img} alt="" loading="lazy" />
               </div>
               <p>{hotel?.info[1].content}</p>
             </div>
@@ -124,7 +124,7 @@ const Post = ({ setHeaderPageName }) => {
             <div className="info-container">
               <p>{hotel?.info[2].content}</p>
               <div className="img-container">
-                <img src={hotel?.info[2].img} alt="postImg1" />
+                <img src={hotel?.info[2].img} alt="postImg1" loading="lazy" />
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ const Post = ({ setHeaderPageName }) => {
             <h2>{hotel?.info[3].infoTitle}</h2>
             <div className="info-container">
               <div className="img-container">
-                <img src={hotel?.info[3].img} alt="" />
+                <img src={hotel?.info[3].img} alt="" loading="lazy" />
               </div>
               <p>{hotel?.info[3].content}</p>
             </div>
@@ -200,3 +200,4 @@ const Post = ({ setHeaderPageName }) => {
   );
 };
 export default Post;
+
