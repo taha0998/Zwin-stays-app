@@ -55,7 +55,7 @@ const Home = ({ setHeaderPageName }) => {
           <div className="img-container">
             {!loading && data && data.length > 0 && data[randomIndex] && (
               <Link to={`/post/${data[randomIndex][0]}`}>
-                <img src={data[randomIndex][1].cardImg} alt="homeImg" />
+                <img src={data[randomIndex][1].cardImg} alt="homeImg" loading="lazy" />
               </Link>
             )}
           </div>
@@ -91,5 +91,6 @@ const Home = ({ setHeaderPageName }) => {
   );
 };
 export default Home;
+
 
 
